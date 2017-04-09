@@ -1,0 +1,4 @@
+D:\Bars-and-Tools\TS3Tray\src\obj\Debug\Ts3Tray.csprojResolveAssemblyReference.cache
+D:\Bars-and-Tools\TS3Tray\src\obj\Debug\app.baml
+D:\Bars-and-Tools\TS3Tray\src\obj\Debug\app.g.cs
+D:\Bars-and-Tools\TS3Tray\src\obj\Debug\Ts3Tray_MarkupCompile.cache
