@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="Ts3Tray.MessageBox" Name="MessageBoxWnd" Title="Info" Height="220" Width="450" ShowInTaskbar="True" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" Background="#00FFFFFF" Visibility="Visible" Topmost="True" BorderThickness="1" Icon="/Ts3Tray;component/Resources/AppIcon.ico" WindowStartupLocation="CenterScreen" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:stb="clr-namespace:Ts3Tray;assembly=Ts3Tray,Version=1.0.1.0,Culture=neutral,PublicKeyToken=null">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Generic.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Border CornerRadius="5">
+    <Grid Name="uiGridMain" Margin="10">
+      <Border Width="Auto" Height="Auto" Style="{StaticResource MainGridBorder}" />
+      <Grid Margin="5,0,12,0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="0" />
+          <RowDefinition Height="18" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="42" />
+        </Grid.ColumnDefinitions>
+        <stb:SlickToggleButton x:Name="CloseButton" Click="Button_Click" CornerRadius="0,0,4,0" Style="{StaticResource SlickButton}" HighlightBackground="Red" Content="X" Grid.Row="1" FontWeight="Bold" Foreground="#FFFFFFFF" Grid.Column="1" />
+      </Grid>
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="44" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="48" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1">
+          <Rectangle Stroke="#FF1E1E1E" StrokeThickness="1" Height="1" Margin="2,0,2,0" />
+          <Rectangle Stroke="#FFFFFFFF" StrokeThickness="1" Height="1" Margin="2,0,2,0" />
+          <StackPanel Margin="10,10,10,10" Orientation="Horizontal">
+            <Image Name="image1" Height="50" Stretch="Fill" Width="50" Source="/Ts3Tray;component/Resources/dialog-error.png" VerticalAlignment="Top" />
+            <Label MaxWidth="340" MaxHeight="50" VerticalAlignment="Top">
+              <TextBlock Name="MessageText" TextWrapping="WrapWithOverflow">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</TextBlock>
+            </Label>
+          </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+          <Rectangle Stroke="#FF1E1E1E" StrokeThickness="1" Height="1" Margin="2,0,2,0" />
+          <Rectangle Stroke="#FFFFFFFF" StrokeThickness="1" Height="1" Margin="2,0,2,0" />
+          <Button HorizontalAlignment="Right" Style="{StaticResource StealthButton}" Width="67" Content="{x:Static properties:Resources.BTNOK}" Margin="0,0,10,0" Click="Button_Click" />
+        </StackPanel>
+        <Label Name="MessageTitel" Margin="5,3.395,79,15" Foreground="#FFFFFFFF" Opacity="0.9" Content="MessageBox" />
+      </Grid>
+    </Grid>
+  </Border>
+</Window>

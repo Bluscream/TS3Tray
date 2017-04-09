@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style x:Key="MainGridBorder" TargetType="{x:Type Border}">
+    <Setter Property="Border.Background" Value="#FFFFFFFF" />
+    <Setter Property="Border.BorderBrush" Value="#FF000000" />
+    <Setter Property="Border.BorderThickness" Value="1" />
+    <Setter Property="Border.CornerRadius" Value="5" />
+    <Setter Property="Border.Background">
+      <Setter.Value>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+          <GradientStop Color="#FF000000" Offset="0.033" />
+          <GradientStop Color="#FFEBEBEB" Offset="0.16" />
+          <GradientStop Color="#FFE4DCDC" Offset="0.003" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.253" />
+          <GradientStop Color="#FFFFFFFF" Offset="1" />
+          <GradientStop Color="#FFD6D0D0" Offset="0.945" />
+          <GradientStop Color="#FFFFFFFF" Offset="0.852" />
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="UIElement.BitmapEffect">
+      <Setter.Value>
+        <OuterGlowBitmapEffect GlowSize="6" GlowColor="Gray" Opacity="1" />
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <ControlTemplate x:Key="SlickButtonTemplate" TargetType="{x:Type local:SlickToggleButton}">
+    <Grid>
+      <Border Name="ButtonBackgroundBorder" Opacity="0" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="{Binding Path=CornerRadius, RelativeSource={RelativeSource TemplatedParent}}" Background="{Binding Path=HighlightBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+      <Border Name="ButtonEdgesBorder" Opacity="1" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="{Binding Path=CornerRadius, RelativeSource={RelativeSource TemplatedParent}}">
+        <Border.BitmapEffect>
+          <DropShadowBitmapEffect Color="#FFFFFFFF" Direction="270" ShadowDepth=".75" Softness="0.20" />
+        </Border.BitmapEffect>
+      </Border>
+      <Border Name="ButtonContentBorder" Opacity="1" BorderThickness="1" CornerRadius="{Binding Path=CornerRadius, RelativeSource={RelativeSource TemplatedParent}}">
+        <ContentPresenter Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" />
+      </Border>
+    </Grid>
+    <ControlTemplate.Triggers>
+      <Trigger Property="UIElement.IsMouseOver" Value="True">
+        <Trigger.Setters>
+          <Setter TargetName="ButtonBackgroundBorder" Property="UIElement.Opacity" Value="1" />
+        </Trigger.Setters>
+      </Trigger>
+      <Trigger Property="ToggleButton.IsChecked" Value="True">
+        <Trigger.Setters>
+          <Setter TargetName="ButtonBackgroundBorder" Property="UIElement.Opacity" Value="1" />
+          <Setter TargetName="ButtonBackgroundBorder" Value="{Binding Path=PressedBackground, RelativeSource={RelativeSource TemplatedParent}}" Property="Border.Background" />
+        </Trigger.Setters>
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <Style x:Key="SlickButton" TargetType="{x:Type ToggleButton}">
+    <Setter Property="Control.Template" Value="{StaticResource SlickButtonTemplate}" />
+  </Style>
+  <ControlTemplate x:Key="StealthButtonTemplate" TargetType="{x:Type Button}">
+    <ControlTemplate.Resources>
+      <Storyboard x:Key="MouseOverButtonEffect">
+        <ThicknessAnimation Storyboard.TargetName="ButtonBorder" Storyboard.TargetProperty="(Control.Margin)" Duration="0:0:0.05" FillBehavior="Stop" From="0,0,0,0" To="2,2,2,2" AutoReverse="True" />
+      </Storyboard>
+    </ControlTemplate.Resources>
+    <Grid Name="StealthButtonOuterGrid">
+      <Border Name="ButtonBorder" CornerRadius="4,4,4,4" Margin="0,0,0,0" Background="#00FFFFFF" Opacity="0" BorderThickness="2" />
+      <Border Name="ButtonBorderFill" CornerRadius="4,4,4,4" Margin="0,0,0,0" Opacity="0.2" BorderThickness="3">
+        <Border.Background>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0" Color="#006701" />
+            <GradientStop Offset="1" Color="#00ef01" />
+          </LinearGradientBrush>
+        </Border.Background>
+      </Border>
+      <Border Name="ButtonContent" Margin="5,5,5,5">
+        <Label Name="ContentPresenterLabel" Foreground="#FF000000" Opacity="0.3" FontWeight="Bold" Width="Auto" HorizontalAlignment="Center">
+          <ContentPresenter Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="LeftToRight" OverridesDefaultStyle="True" />
+        </Label>
+      </Border>
+    </Grid>
+    <ControlTemplate.Triggers>
+      <Trigger Property="UIElement.IsMouseOver" Value="True">
+        <Trigger.Setters>
+          <Setter TargetName="ContentPresenterLabel" Property="Control.Foreground" Value="#FFFFFFFF" />
+          <Setter TargetName="ContentPresenterLabel" Property="Control.FontWeight" Value="Normal" />
+          <Setter TargetName="ContentPresenterLabel" Property="UIElement.Opacity" Value="1" />
+          <Setter TargetName="ButtonBorderFill" Property="UIElement.Opacity" Value="1" />
+          <Setter TargetName="ButtonBorder" Property="UIElement.Opacity" Value="1" />
+          <Setter TargetName="ButtonBorder" Property="Border.BorderBrush" Value="#FF000000" />
+          <Setter TargetName="ButtonBorder" Property="UIElement.BitmapEffect">
+            <Setter.Value>
+              <OuterGlowBitmapEffect GlowColor="Gray" GlowSize="2" Opacity="0.75" />
+            </Setter.Value>
+          </Setter>
+        </Trigger.Setters>
+      </Trigger>
+      <EventTrigger RoutedEvent="Grid.MouseEnter" SourceName="StealthButtonOuterGrid">
+        <BeginStoryboard Storyboard="{StaticResource MouseOverButtonEffect}" />
+      </EventTrigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <Style x:Key="StealthButton" TargetType="{x:Type Button}">
+    <Setter Property="Control.Template" Value="{StaticResource StealthButtonTemplate}" />
+  </Style>
+</ResourceDictionary>

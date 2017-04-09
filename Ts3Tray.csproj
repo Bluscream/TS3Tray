@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{7673829C-82D5-4AAF-8481-9E98F1C71FE9}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>Ts3Tray</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ts3Tray.Properties\Resources.cs" />
+    <Compile Include="Ts3Tray.Properties\Settings.cs" />
+    <Compile Include="Ts3Tray\AboutBox.cs" />
+    <Compile Include="Ts3Tray\App.cs" />
+    <Compile Include="Ts3Tray\ArrowCreater.cs" />
+    <Compile Include="Ts3Tray\ButtonsProperties.cs" />
+    <Compile Include="Ts3Tray\ChannelpasswordRequiredHandler.cs" />
+    <Compile Include="Ts3Tray\ErrorHandler.cs" />
+    <Compile Include="Ts3Tray\ExtendedNotifyIcon.cs" />
+    <Compile Include="Ts3Tray\FileSize.cs" />
+    <Compile Include="Ts3Tray\ISingleInstanceApp.cs" />
+    <Compile Include="Ts3Tray\MainWindow.cs" />
+    <Compile Include="Ts3Tray\MessageBox.cs" />
+    <Compile Include="Ts3Tray\NativeMethods.cs" />
+    <Compile Include="Ts3Tray\NicknameRequiredHandler.cs" />
+    <Compile Include="Ts3Tray\NumericUpDownTextBox.cs" />
+    <Compile Include="Ts3Tray\Password.cs" />
+    <Compile Include="Ts3Tray\ServerpasswordRequiredHandler.cs" />
+    <Compile Include="Ts3Tray\SetupWindow.cs" />
+    <Compile Include="Ts3Tray\SingleInstance.cs" />
+    <Compile Include="Ts3Tray\SlickToggleButton.cs" />
+    <Compile Include="Ts3Tray\TreeChannel.cs" />
+    <Compile Include="Ts3Tray\TreeUser.cs" />
+    <Compile Include="Ts3Tray\TS3Channel.cs" />
+    <Compile Include="Ts3Tray\TS3ChannelList.cs" />
+    <Compile Include="Ts3Tray\TS3Group.cs" />
+    <Compile Include="Ts3Tray\TS3GroupList.cs" />
+    <Compile Include="Ts3Tray\TS3Server.cs" />
+    <Compile Include="Ts3Tray\TS3User.cs" />
+    <Compile Include="Ts3Tray\TS3UserList.cs" />
+    <Compile Include="Ts3Tray\TS3Viewer.cs" />
+    <Compile Include="Ts3Tray\UserJoinedHandler.cs" />
+    <Compile Include="Ts3Tray\UserLeaveHandler.cs" />
+    <Compile Include="Ts3Tray\WM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="resources\appicon.ico" />
+    <EmbeddedResource Include="resources\channel.png" />
+    <EmbeddedResource Include="resources\channel_locked.png" />
+    <EmbeddedResource Include="resources\channel_music.png" />
+    <EmbeddedResource Include="resources\client_away.png" />
+    <EmbeddedResource Include="resources\client_ca.png" />
+    <EmbeddedResource Include="resources\client_co.png" />
+    <EmbeddedResource Include="resources\client_flag_talking.png" />
+    <EmbeddedResource Include="resources\client_input_hardware.png" />
+    <EmbeddedResource Include="resources\client_input_muted.png" />
+    <EmbeddedResource Include="resources\client_is_priority_speaker.png" />
+    <EmbeddedResource Include="resources\client_is_talker.png" />
+    <EmbeddedResource Include="resources\client_muted_head_hw.png" />
+    <EmbeddedResource Include="resources\client_output_hardware.png" />
+    <EmbeddedResource Include="resources\client_output_muted.png" />
+    <EmbeddedResource Include="resources\client_player.png" />
+    <EmbeddedResource Include="resources\client_sa.png" />
+    <EmbeddedResource Include="resources\dialog-error.png" />
+    <EmbeddedResource Include="resources\dialog-info.png" />
+    <EmbeddedResource Include="resources\home.png" />
+    <EmbeddedResource Include="resources\locked.png" />
+    <EmbeddedResource Include="resources\pinned.png" />
+    <EmbeddedResource Include="resources\serverimg.png" />
+    <EmbeddedResource Include="resources\unpinned.png" />
+    <EmbeddedResource Include="Ts3Tray.Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="aboutbox.xaml" />
+    <Page Include="app.xaml" />
+    <Page Include="generic.xaml" />
+    <Page Include="mainwindow.xaml" />
+    <Page Include="messagebox.xaml" />
+    <Page Include="numericupdowntextbox.xaml" />
+    <Page Include="password.xaml" />
+    <Page Include="setupwindow.xaml" />
+    <Page Include="ts3viewer.xaml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
